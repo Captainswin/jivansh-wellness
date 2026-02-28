@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Now – Jivansh Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <style>
+    .order-page { padding:56px 0 80px; background:var(--cream); }
+    .order-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:start; }
+    .order-form-box { background:var(--white); border-radius:var(--radius); padding:40px; box-shadow:var(--shadow); }
+    .order-form-box h1 { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--green-dark); margin-bottom:6px; }
+    .order-form-box > p { font-size:0.88rem; color:var(--text-muted); margin-bottom:28px; }
+    .form-section-title { font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--green-dark); margin:24px 0 14px; border-bottom:1px solid var(--border); padding-bottom:8px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-group { display:flex; flex-direction:column; gap:5px; margin-bottom:14px; }
+    .form-group label { font-size:0.82rem; font-weight:600; color:var(--text-dark); }
+    .form-group label span { color:#e74c3c; }
+    .form-group input, .form-group select, .form-group textarea { padding:11px 13px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text-dark); background:var(--cream); outline:none; transition:border-color 0.2s; width:100%; }
+    .form-group input:focus, .form-group select:focus { border-color:var(--green-dark); background:#fff; }
+    .qty-row { display:flex; align-items:center; gap:12px; }
+    .qty-btn { width:36px; height:36px; border:1.5px solid var(--border); background:#fff; border-radius:4px; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+    .qty-btn:hover { border-color:var(--green-dark); color:var(--green-dark); }
+    .qty-display { font-size:1.1rem; font-weight:700; min-width:32px; text-align:center; }
+    /* PAYMENT SECTION */
+    .payment-section { background:var(--cream); border:1px solid var(--border); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px; }
+    .payment-section h3 { font-size:0.88rem; font-weight:700; color:var(--text-dark); margin-bottom:14px; }
+    .payment-methods { display:flex; flex-direction:column; gap:10px; }
+    .payment-option { display:flex; align-items:center; gap:12px; padding:12px 16px; background:#fff; border:1.5px solid var(--border); border-radius:var(--radius-sm); cursor:pointer; transition:border-color 0.2s; }
+    .payment-option:hover, .payment-option.selected { border-color:var(--green-dark); }
+    .payment-option input[type=radio] { accent-color:var(--green-dark); width:16px; height:16px; }
+    .payment-option label { font-size:0.88rem; font-weight:500; cursor:pointer; }
+    .razorpay-box { background:linear-gradient(135deg,#528FF0,#3B6FD0); color:#fff; border-radius:var(--radius-sm); padding:18px 20px; text-align:center; margin-top:10px; }
+    .razorpay-box p { font-size:0.82rem; margin-bottom:12px; opacity:0.9; }
+    .razorpay-btn { background:#fff; color:#3B6FD0; font-weight:700; font-size:0.9rem; border:none; border-radius:4px; padding:12px 28px; cursor:pointer; transition:opacity 0.2s; font-family:'Jost',sans-serif; }
+    .razorpay-btn:hover { opacity:0.9; }
+    .rp-logos { display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
+    .rp-logo { background:rgba(255,255,255,0.2); border-radius:3px; padding:3px 8px; font-size:0.7rem; font-weight:600; }
+    .place-order-btn { background:var(--gold); border:none; color:var(--green-dark); font-family:'Jost',sans-serif; font-weight:800; font-size:1.05rem; padding:18px; width:100%; border-radius:4px; cursor:pointer; transition:background 0.2s; margin-top:8px; }
+    .place-order-btn:hover { background:var(--gold-light); }
+    .secure-note { display:flex; align-items:center; justify-content:center; gap:6px; font-size:0.75rem; color:var(--text-muted); margin-top:10px; }
+    /* ORDER SUMMARY */
+    .order-summary { position:sticky; top:80px; }
+    .summary-card { background:var(--white); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); margin-bottom:20px; }
+    .summary-card h2 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--green-dark); margin-bottom:20px; }
+    .summary-product { display:flex; gap:14px; align-items:center; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .summary-product img { width:72px; height:72px; object-fit:cover; border-radius:var(--radius-sm); border:1px solid var(--border); }
+    .sp-info h4 { font-size:0.92rem; font-weight:700; color:var(--text-dark); margin-bottom:3px; }
+    .sp-info p { font-size:0.8rem; color:var(--text-muted); }
+    .summary-row { display:flex; justify-content:space-between; font-size:0.88rem; color:var(--text-mid); padding:6px 0; }
+    .summary-row.total { font-size:1.05rem; font-weight:800; color:var(--text-dark); border-top:1px solid var(--border); margin-top:8px; padding-top:12px; }
+    .summary-row .green { color:var(--green-dark); }
+    .trust-points { background:#f0f8f0; border:1px solid #c8e6c9; border-radius:var(--radius-sm); padding:16px; }
+    .trust-points p { font-size:0.82rem; color:var(--green-dark); line-height:1.8; }
+    @media(max-width:900px){ .order-grid { grid-template-columns:1fr; } .order-summary { position:static; } }
+    @media(max-width:600px){ .order-page { padding:36px 0 60px; } .order-form-box { padding:22px 16px; } .form-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<div class="announcement-bar">🌿 100% Natural & Ayurvedic &nbsp;|&nbsp; FSSAI Approved &nbsp;|&nbsp; Free Shipping Above ₹499</div>
+<header id="main-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Jivansh Wellness" class="logo-img"></a>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="products.html" onclick="closeMobileNav()">Products</a>
+    <a href="about.html" onclick="closeMobileNav()">About Us</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  </div>
+</header>
+
+<section class="order-page">
+  <div class="container">
+    <div class="order-grid">
+      <!-- FORM -->
+      <div class="order-form-box">
+        <h1>🛒 Complete Your Order</h1>
+        <p>Fill in your details below to place your order securely.</p>
+
+        <div class="form-section-title">📦 Delivery Information</div>
+        <div class="form-row">
+          <div class="form-group"><label>First Name <span>*</span></label><input type="text" placeholder="Rahul"></div>
+          <div class="form-group"><label>Last Name <span>*</span></label><input type="text" placeholder="Sharma"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Phone Number <span>*</span></label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        </div>
+        <div class="form-group"><label>Full Address <span>*</span></label><input type="text" placeholder="House No, Street, Area"></div>
+        <div class="form-row">
+          <div class="form-group"><label>City <span>*</span></label><input type="text" placeholder="Ranchi"></div>
+          <div class="form-group"><label>State <span>*</span></label><input type="text" placeholder="Jharkhand"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Pincode <span>*</span></label><input type="text" placeholder="834001"></div>
+          <div class="form-group"><label>Quantity</label>
+            <div class="qty-row">
+              <button class="qty-btn" onclick="changeQty(-1)">−</button>
+              <span class="qty-display" id="qtyDisplay">1</span>
+              <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section-title">💳 Payment Method</div>
+        <div class="payment-section">
+          <h3>Select how you want to pay:</h3>
+          <div class="payment-methods">
+            <div class="payment-option selected" onclick="selectPayment(this,'razorpay')">
+              <input type="radio" name="payment" value="razorpay" checked>
+              <label>💳 Pay Online via Razorpay (UPI / Card / Net Banking)</label>
+            </div>
+            <div class="payment-option" onclick="selectPayment(this,'upi')">
+              <input type="radio" name="payment" value="upi">
+              <label>📱 Pay via UPI (GPay / PhonePe / Paytm)</label>
+            </div>
+          </div>
+          <div class="razorpay-box" id="razorpayBox" style="margin-top:16px;">
+            <p>🔒 Secure payment powered by Razorpay</p>
+            <button class="razorpay-btn" onclick="alert('Razorpay integration will be activated soon. Please contact us on WhatsApp to complete your order.')">Pay with Razorpay</button>
+            <div class="rp-logos">
+              <span class="rp-logo">UPI</span>
+              <span class="rp-logo">Visa</span>
+              <span class="rp-logo">MasterCard</span>
+              <span class="rp-logo">NetBanking</span>
+              <span class="rp-logo">Wallets</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="place-order-btn" onclick="placeOrder()">🛒 Place Order – ₹<span id="totalDisplay">349</span></button>
+        <p class="secure-note">🔒 100% Secure &nbsp;|&nbsp; FSSAI Approved &nbsp;|&nbsp; Easy Returns</p>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="order-summary">
+        <div class="summary-card">
+          <h2>Order Summary</h2>
+          <div class="summary-product">
+            <img src="assets/images/product-main.jpeg" alt="Pachan Pro">
+            <div class="sp-info">
+              <h4>Pachan Pro Digestion Syrup</h4>
+              <p>400ml | Ayurvedic Herbal Formula</p>
+            </div>
+          </div>
+          <div class="summary-row"><span>Price (1 unit)</span><span><s>₹999</s></span></div>
+          <div class="summary-row"><span>Offer Price</span><span class="green">₹349</span></div>
+          <div class="summary-row"><span>You Save</span><span class="green">₹650 (65% off)</span></div>
+          <div class="summary-row"><span>Shipping</span><span class="green">FREE</span></div>
+          <div class="summary-row total"><span>Total</span><span>₹349</span></div>
+        </div>
+        <div class="trust-points">
+          <p>✅ FSSAI Approved Product<br>🌿 100% Natural Ingredients<br>📦 Shipped within 24 hours<br>🚚 Delivered in 3–7 business days<br>↩️ Easy returns within 5 days</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="assets/images/logo.png" alt="Jivansh Wellness" class="footer-logo"/><p>Ancient Ayurvedic wisdom for modern wellness.</p><p>📞 +91 92297 39637</p><p>✉️ info@jivanshwellness.com</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a></div>
+    <div class="footer-col"><h4>Policies</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="shipping-policy.html">Shipping Policy</a><a href="cancellation-policy.html">Cancellation &amp; Returns</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Jivansh Wellness. All rights reserved. | Made in India 🇮🇳</p>
+    <div class="footer-legal"><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="shipping-policy.html">Shipping</a><a href="cancellation-policy.html">Returns</a></div>
+  </div>
+</footer>
+<a href="https://wa.me/919229739637?text=Hi%20I%20want%20to%20place%20an%20order%20for%20Pachan%20Pro" target="_blank" class="whatsapp-float"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script src="assets/js/main.js"></script>
+<script>
+let qty = 1;
+const basePrice = 349;
+function changeQty(d){ qty = Math.max(1, qty+d); document.getElementById('qtyDisplay').textContent=qty; document.getElementById('totalDisplay').textContent=(qty*basePrice); }
+function selectPayment(el, type){ document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); el.querySelector('input').checked=true; document.getElementById('razorpayBox').style.display=type==='razorpay'?'block':'none'; }
+function placeOrder(){ alert('Thank you for your order!\n\nOur team will contact you shortly on your registered number to confirm.\n\nFor instant support, message us on WhatsApp: +91 92297 39637'); }
+</script>
+</body>
+</html>
