@@ -35,20 +35,11 @@
     .razorpay-box p { font-size:0.82rem; margin-bottom:12px; opacity:0.9; }
     .razorpay-btn { background:#fff; color:#3B6FD0; font-weight:700; font-size:0.9rem; border:none; border-radius:4px; padding:12px 28px; cursor:pointer; transition:opacity 0.2s; font-family:'Jost',sans-serif; }
     .razorpay-btn:hover { opacity:0.9; }
-    .rp-logos { display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
-    .rp-icon-wrap { border-radius:5px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center; background:#fff; cursor:default; transition:transform 0.15s; }
-    .rp-icon-wrap:hover { transform:translateY(-2px); }
+    .rp-logos { display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
+    .rp-logo { background:rgba(255,255,255,0.2); border-radius:3px; padding:3px 8px; font-size:0.7rem; font-weight:600; }
     .place-order-btn { background:var(--gold); border:none; color:var(--green-dark); font-family:'Jost',sans-serif; font-weight:800; font-size:1.05rem; padding:18px; width:100%; border-radius:4px; cursor:pointer; transition:background 0.2s; margin-top:8px; }
     .place-order-btn:hover { background:var(--gold-light); }
     .secure-note { display:flex; align-items:center; justify-content:center; gap:6px; font-size:0.75rem; color:var(--text-muted); margin-top:10px; }
-    .submitting-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:16px; color:#fff; font-size:1rem; font-family:'Jost',sans-serif; }
-    .submitting-overlay.show { display:flex; }
-    .spinner { width:44px; height:44px; border:4px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:spin 0.8s linear infinite; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .success-box { background:#fff; color:var(--green-dark); border-radius:12px; padding:32px 28px; text-align:center; max-width:340px; box-shadow:0 8px 40px rgba(0,0,0,0.2); }
-    .success-box h2 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; margin-bottom:10px; }
-    .success-box p { font-size:0.88rem; color:var(--text-mid); line-height:1.7; margin-bottom:18px; }
-    .success-box .ok-btn { background:var(--green-dark); color:#fff; border:none; padding:12px 28px; border-radius:4px; font-family:'Jost',sans-serif; font-weight:600; cursor:pointer; font-size:0.95rem; }
     /* ORDER SUMMARY */
     .order-summary { position:sticky; top:80px; }
     .summary-card { background:var(--white); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); margin-bottom:20px; }
@@ -64,16 +55,6 @@
     .trust-points p { font-size:0.82rem; color:var(--green-dark); line-height:1.8; }
     @media(max-width:900px){ .order-grid { grid-template-columns:1fr; } .order-summary { position:static; } }
     @media(max-width:600px){ .order-page { padding:36px 0 60px; } .order-form-box { padding:22px 16px; } .form-row { grid-template-columns:1fr; } }
-
-    .submitting-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:16px; }
-    .submitting-overlay.show { display:flex; }
-    .spinner { width:48px; height:48px; border:4px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:spin 0.8s linear infinite; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .success-box { background:#fff; color:var(--green-dark); border-radius:12px; padding:36px 28px; text-align:center; max-width:340px; box-shadow:0 8px 40px rgba(0,0,0,0.25); }
-    .success-box .s-icon { font-size:3rem; margin-bottom:10px; }
-    .success-box h2 { font-family:'Cormorant Garamond',serif; font-size:1.7rem; margin-bottom:10px; }
-    .success-box p { font-size:0.88rem; color:var(--text-mid); line-height:1.7; margin-bottom:18px; }
-    .success-box .ok-btn { background:var(--green-dark); color:#fff; border:none; padding:13px 32px; border-radius:4px; font-family:'Jost',sans-serif; font-weight:700; cursor:pointer; font-size:0.95rem; }
   </style>
 </head>
 <body>
@@ -108,18 +89,21 @@
         <p>Fill in your details below to place your order securely.</p>
 
         <div class="form-section-title">📦 Delivery Information</div>
-        <div class="form-group"><label>Full Name <span>*</span></label><input type="text" id="fullName" name="fullName" placeholder="Rahul Sharma" required></div>
         <div class="form-row">
-          <div class="form-group"><label>Phone Number <span>*</span></label><input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required></div>
-          <div class="form-group"><label>Email Address</label><input type="email" id="email" name="email" placeholder="your@email.com"></div>
-        </div>
-        <div class="form-group"><label>Full Address <span>*</span></label><input type="text" id="address" name="address" placeholder="House No, Street, Area" required></div>
-        <div class="form-row">
-          <div class="form-group"><label>City <span>*</span></label><input type="text" id="city" name="city" placeholder="Ranchi" required></div>
-          <div class="form-group"><label>State <span>*</span></label><input type="text" id="state" name="state" placeholder="Jharkhand" required></div>
+          <div class="form-group"><label>First Name <span>*</span></label><input type="text" placeholder="Rahul"></div>
+          <div class="form-group"><label>Last Name <span>*</span></label><input type="text" placeholder="Sharma"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Pincode <span>*</span></label><input type="text" id="pincode" name="pincode" placeholder="834001" required></div>
+          <div class="form-group"><label>Phone Number <span>*</span></label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        </div>
+        <div class="form-group"><label>Full Address <span>*</span></label><input type="text" placeholder="House No, Street, Area"></div>
+        <div class="form-row">
+          <div class="form-group"><label>City <span>*</span></label><input type="text" placeholder="Ranchi"></div>
+          <div class="form-group"><label>State <span>*</span></label><input type="text" placeholder="Jharkhand"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Pincode <span>*</span></label><input type="text" placeholder="834001"></div>
           <div class="form-group"><label>Quantity</label>
             <div class="qty-row">
               <button class="qty-btn" onclick="changeQty(-1)">−</button>
@@ -146,11 +130,11 @@
             <p>🔒 Secure payment powered by Razorpay</p>
             <button class="razorpay-btn" onclick="alert('Razorpay integration will be activated soon. Please contact us on WhatsApp to complete your order.')">Pay with Razorpay</button>
             <div class="rp-logos">
-              <div class="rp-icon-wrap" title="UPI"><svg width="48" height="28" viewBox="0 0 48 28" fill="none"><rect width="48" height="28" rx="4" fill="white" fill-opacity="0.95"/><text x="24" y="19" text-anchor="middle" font-size="10" font-weight="800" font-family="Arial" fill="#6C3FBF">UPI</text><circle cx="10" cy="14" r="4" fill="#097939"/><circle cx="38" cy="14" r="4" fill="#E9232A"/></svg></div>
-              <div class="rp-icon-wrap" title="Visa"><svg width="48" height="28" viewBox="0 0 48 28" fill="none"><rect width="48" height="28" rx="4" fill="white" fill-opacity="0.95"/><text x="24" y="20" text-anchor="middle" font-size="13" font-weight="900" font-family="Arial" fill="#1A1F71" letter-spacing="-0.5">VISA</text></svg></div>
-              <div class="rp-icon-wrap" title="Mastercard"><svg width="48" height="28" viewBox="0 0 48 28" fill="none"><rect width="48" height="28" rx="4" fill="white" fill-opacity="0.95"/><circle cx="18" cy="14" r="8" fill="#EB001B"/><circle cx="30" cy="14" r="8" fill="#F79E1B"/><path d="M24 7.53A8 8 0 0 1 27.6 14 8 8 0 0 1 24 20.47 8 8 0 0 1 20.4 14 8 8 0 0 1 24 7.53z" fill="#FF5F00"/></svg></div>
-              <div class="rp-icon-wrap" title="RuPay"><svg width="48" height="28" viewBox="0 0 48 28" fill="none"><rect width="48" height="28" rx="4" fill="white" fill-opacity="0.95"/><text x="24" y="18" text-anchor="middle" font-size="8.5" font-weight="800" font-family="Arial" fill="#0066B3">RuPay</text><rect x="6" y="20" width="36" height="3" rx="1.5" fill="#F26522"/></svg></div>
-              <div class="rp-icon-wrap" title="Net Banking"><svg width="48" height="28" viewBox="0 0 48 28" fill="none"><rect width="48" height="28" rx="4" fill="white" fill-opacity="0.95"/><rect x="9" y="12" width="30" height="11" rx="2" fill="none" stroke="#2196F3" stroke-width="1.5"/><rect x="9" y="8" width="30" height="5" rx="2" fill="#2196F3"/><rect x="13" y="16" width="5" height="3" rx="1" fill="#2196F3"/><rect x="21" y="16" width="5" height="3" rx="1" fill="#2196F3"/><rect x="29" y="16" width="5" height="3" rx="1" fill="#2196F3"/></svg></div>
+              <span class="rp-logo">UPI</span>
+              <span class="rp-logo">Visa</span>
+              <span class="rp-logo">MasterCard</span>
+              <span class="rp-logo">NetBanking</span>
+              <span class="rp-logo">Wallets</span>
             </div>
           </div>
         </div>
@@ -182,34 +166,11 @@
       </div>
     </div>
   </div>
-
-<!-- SUBMIT OVERLAY -->
-<div class="submitting-overlay" id="submitOverlay">
-  <div class="spinner" id="spinnerEl"></div>
-  <div class="success-box" id="successBox" style="display:none;">
-    <div style="font-size:2.5rem;margin-bottom:8px;">✅</div>
-    <h2>Order Placed!</h2>
-    <p>Thank you! Your order details have been recorded.<br>Our team will call you shortly to confirm.<br><br>For instant support, WhatsApp us:</p>
-    <a href="https://wa.me/919229739637" style="display:inline-block;margin-bottom:16px;color:var(--green-dark);font-weight:600;">+91 92297 39637</a><br>
-    <button class="ok-btn" onclick="document.getElementById('submitOverlay').classList.remove('show');">OK, Got it!</button>
-  </div>
-</div>
-
-<!-- SUBMIT OVERLAY -->
-<div class="submitting-overlay" id="submitOverlay">
-  <div class="spinner" id="spinnerEl"></div>
-  <div class="success-box" id="successBox" style="display:none;">
-    <div class="s-icon">✅</div>
-    <h2>Order Placed!</h2>
-    <p>Thank you! Your order has been recorded.<br>Our team will call you shortly to confirm.<br><br>WhatsApp us for instant support:<br><strong>+91 92297 39637</strong></p>
-    <button class="ok-btn" onclick="document.getElementById('submitOverlay').classList.remove('show');">Got it!</button>
-  </div>
-</div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><img src="assets/images/logo.png" alt="Jivansh Wellness" class="footer-logo"/><p>Ancient Ayurvedic wisdom for modern wellness.</p><p>📞 +91 92297 39637</p><p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84edeae2ebc4eeedf2e5eaf7ecf3e1e8e8eae1f7f7aae7ebe9">[email&#160;protected]</a></p></div>
+    <div class="footer-brand"><img src="assets/images/logo.png" alt="Jivansh Wellness" class="footer-logo"/><p>Ancient Ayurvedic wisdom for modern wellness.</p><p>📞 +91 92297 39637</p><p>✉️ info@jivanshwellness.com</p></div>
     <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a></div>
     <div class="footer-col"><h4>Policies</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="shipping-policy.html">Shipping Policy</a><a href="cancellation-policy.html">Cancellation &amp; Returns</a></div>
   </div>
@@ -219,80 +180,13 @@
   </div>
 </footer>
 <a href="https://wa.me/919229739637?text=Hi%20I%20want%20to%20place%20an%20order%20for%20Pachan%20Pro" target="_blank" class="whatsapp-float"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
-  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwknnsAOl7_DaTXrbax75uEYramLluMitpA4sLxnUXeUZZZv0LeuDvpNNLlQo4Sa7MAOg/exec';
-
-  var qty = 1;
-  var basePrice = 349;
-
-  function changeQty(d) {
-    qty = Math.max(1, qty + d);
-    document.getElementById('qtyDisplay').textContent = qty;
-    document.getElementById('totalDisplay').textContent = (qty * basePrice);
-  }
-
-  function selectPayment(el, type) {
-    document.querySelectorAll('.payment-option').forEach(function(o){ o.classList.remove('selected'); });
-    el.classList.add('selected');
-    el.querySelector('input').checked = true;
-    document.getElementById('razorpayBox').style.display = type === 'razorpay' ? 'block' : 'none';
-  }
-
-  function placeOrder() {
-    var fullName = (document.getElementById('fullName') || {}).value || '';
-    var phone    = (document.getElementById('phone')    || {}).value || '';
-    var email    = (document.getElementById('email')    || {}).value || '';
-    var address  = (document.getElementById('address')  || {}).value || '';
-    var city     = (document.getElementById('city')     || {}).value || '';
-    var state    = (document.getElementById('state')    || {}).value || '';
-    var pincode  = (document.getElementById('pincode')  || {}).value || '';
-    var payment  = document.querySelector('input[name=payment]:checked') ? document.querySelector('input[name=payment]:checked').value : '';
-
-    if (!fullName.trim()) { alert('Please enter your full name.'); document.getElementById('fullName').focus(); return; }
-    if (!phone.trim())    { alert('Please enter your phone number.'); document.getElementById('phone').focus(); return; }
-    if (!address.trim())  { alert('Please enter your address.'); document.getElementById('address').focus(); return; }
-    if (!city.trim())     { alert('Please enter your city.'); document.getElementById('city').focus(); return; }
-    if (!pincode.trim())  { alert('Please enter your pincode.'); document.getElementById('pincode').focus(); return; }
-
-    var overlay    = document.getElementById('submitOverlay');
-    var spinner    = document.getElementById('spinnerEl');
-    var successBox = document.getElementById('successBox');
-    overlay.classList.add('show');
-    spinner.style.display = 'block';
-    successBox.style.display = 'none';
-
-    var orderData = {
-      timestamp: new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'}),
-      fullName:  fullName,
-      phone:     phone,
-      email:     email,
-      address:   address,
-      city:      city,
-      state:     state,
-      pincode:   pincode,
-      product:   'Pachan Pro - 400ml',
-      quantity:  qty,
-      total:     'Rs.' + (qty * basePrice),
-      payment:   payment,
-      status:    'New Order'
-    };
-
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData)
-    })
-    .then(function() {
-      spinner.style.display = 'none';
-      successBox.style.display = 'block';
-    })
-    .catch(function() {
-      spinner.style.display = 'none';
-      successBox.style.display = 'block';
-    });
-  }
+let qty = 1;
+const basePrice = 349;
+function changeQty(d){ qty = Math.max(1, qty+d); document.getElementById('qtyDisplay').textContent=qty; document.getElementById('totalDisplay').textContent=(qty*basePrice); }
+function selectPayment(el, type){ document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); el.querySelector('input').checked=true; document.getElementById('razorpayBox').style.display=type==='razorpay'?'block':'none'; }
+function placeOrder(){ alert('Thank you for your order!\n\nOur team will contact you shortly on your registered number to confirm.\n\nFor instant support, message us on WhatsApp: +91 92297 39637'); }
 </script>
 </body>
 </html>
