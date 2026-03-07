@@ -54,6 +54,7 @@
       <a href="contact.html" class="active">Contact</a>
     </nav>
     <div class="header-actions">
+      <a href="products.html" class="btn-primary" style="padding:9px 18px;font-size:0.8rem;">Shop Now</a>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -62,6 +63,7 @@
     <a href="products.html" onclick="closeMobileNav()">Products</a>
     <a href="about.html" onclick="closeMobileNav()">About Us</a>
     <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+    <a href="products.html" class="mobile-cta" onclick="closeMobileNav()">Shop Now</a>
   </div>
 </header>
 
@@ -72,19 +74,17 @@
       <div class="contact-form-box">
         <h1>Contact Us</h1>
         <p>Have a question, concern or feedback? We'd love to hear from you.</p>
-        <form id="contactForm" onsubmit="handleContactSubmit(event)" novalidate>
         <div class="form-row">
-          <div class="form-group"><label>Your Name <span>*</span></label><input type="text" name="name" id="contactName" placeholder="Enter your name" required></div>
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Enter your name"></div>
           <div class="form-group"><label>Email Address <span>*</span></label><input type="email" placeholder="your@email.com"></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label>Contact Number <span>*</span></label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
           <div class="form-group"><label>Order Number</label><input type="text" placeholder="(if applicable)"></div>
         </div>
-        <div class="form-group"><label>Message <span>*</span></label><textarea name="message" id="contactMessage" placeholder="Describe your query or concern..." required></textarea></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Describe your query or concern..."></textarea></div>
         <p class="form-note">📎 For order-related issues, please include your order ID and a photo if needed.</p>
-        <button class="send-btn" type="submit">Send ✈️</button>
-        </form>
+        <button class="send-btn" type="button">Send ✈️</button>
       </div>
 
       <div class="contact-info-box">
@@ -98,7 +98,7 @@
         </div>
         <div class="cinfo-item">
           <span class="cinfo-icon">✉️</span>
-          <div><strong>Email</strong><a href="/cdn-cgi/l/email-protection#f1989f979eb19b9887909f829986949d9d9f948282df929e9c"><span class="__cf_email__" data-cfemail="6801060e072802011e09061b001f0d0404060d1b1b460b0705">[email&#160;protected]</span></a></div>
+          <div><strong>Email</strong><a href="mailto:info@jivanshwellness.com">info@jivanshwellness.com</a></div>
         </div>
         <div class="cinfo-item">
           <span class="cinfo-icon">📍</span>
@@ -109,8 +109,8 @@
           <p>Monday to Sunday: 10 AM – 7 PM IST</p>
         </div>
         <div class="contact-relevant">
-          <p><strong>For orders & product queries:</strong><br><a href="/cdn-cgi/l/email-protection#d3babdb5bc93b9baa5b2bda0bba4b6bfbfbdb6a0a0fdb0bcbe"><span class="__cf_email__" data-cfemail="751c1b131a351f1c03141b061d021019191b1006065b161a18">[email&#160;protected]</span></a></p>
-          <p><strong>For business & collaboration:</strong><br><a href="/cdn-cgi/l/email-protection#1d7f686e7473786e6e5d77746b7c736e756a78717173786e6e337e7270"><span class="__cf_email__" data-cfemail="b0d2c5c3d9ded5c3c3f0dad9c6d1dec3d8c7d5dcdcded5c3c39ed3dfdd">[email&#160;protected]</span></a></p>
+          <p><strong>For orders & product queries:</strong><br><a href="mailto:info@jivanshwellness.com">info@jivanshwellness.com</a></p>
+          <p><strong>For business & collaboration:</strong><br><a href="mailto:business@jivanshwellness.com">business@jivanshwellness.com</a></p>
           <p><strong>WhatsApp Support:</strong><br><a href="https://wa.me/919229739637">+91 92297 39637</a></p>
         </div>
       </div>
@@ -120,7 +120,7 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><img src="assets/images/logo.png" alt="Jivansh Wellness" class="footer-logo"/><p>Ancient Ayurvedic wisdom for modern wellness.</p><p>📞 +91 92297 39637</p><p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3950575f567953504f58574a514e5c5555575c4a4a175a5654">[email&#160;protected]</a></p><p>📍 Ranchi, Jharkhand, India</p></div>
+    <div class="footer-brand"><img src="assets/images/logo.png" alt="Jivansh Wellness" class="footer-logo"/><p>Ancient Ayurvedic wisdom for modern wellness.</p><p>📞 +91 92297 39637</p><p>✉️ info@jivanshwellness.com</p><p>📍 Ranchi, Jharkhand, India</p></div>
     <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a></div>
     <div class="footer-col"><h4>Policies</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="shipping-policy.html">Shipping Policy</a><a href="cancellation-policy.html">Cancellation &amp; Returns</a></div>
   </div>
@@ -129,6 +129,7 @@
     <div class="footer-legal"><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="shipping-policy.html">Shipping</a><a href="cancellation-policy.html">Returns</a></div>
   </div>
 </footer>
-<a href="https://wa.me/919229739637" target="_blank" class="whatsapp-float"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.2</script>
+<a href="https://wa.me/919229739637" target="_blank" class="whatsapp-float"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
