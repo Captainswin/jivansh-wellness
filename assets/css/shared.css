@@ -81,9 +81,8 @@ a { text-decoration: none; }
 
 /* FOOTER */
 footer { background: #111f12; color: #ccc; padding: 56px 0 0; }
-.footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px 48px; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
-.footer-brand { min-width: 0; }
-.footer-logo { height: 60px; width: auto; max-width: 200px; object-fit: contain; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 1; display: block; }
+.footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px 48px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.footer-logo { height: 48px; width: auto; object-fit: contain; margin-bottom: 14px; filter: brightness(0) invert(1); opacity: 0.85; }
 .footer-brand p { font-size: 0.83rem; line-height: 1.8; color: #aaa; margin-bottom: 3px; }
 .footer-col h4 { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .footer-col { display: flex; flex-direction: column; }
